@@ -5,7 +5,7 @@ import ChatPage from "./pages/ChatPage";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App flex flex-row items-center justify-center p-4">
       <Router>
         <Routes>
           <Route path="/" element={<Homepage />} />
