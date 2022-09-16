@@ -18,13 +18,25 @@ function Homepage() {
       border-solid border rounded-xl w-full"
       >
         <button
-          onClick={() => setIsLogin((isLogin) => !isLogin)}
+          onClick={() => {
+            if (!isLogin) {
+              setIsLogin(true);
+            } else {
+              return;
+            }
+          }}
           className="px-8 py-2"
         >
           Log In
         </button>
         <button
-          onClick={() => setIsLogin((isLogin) => !isLogin)}
+          onClick={() => {
+            if (isLogin) {
+              setIsLogin(false);
+            } else {
+              return;
+            }
+          }}
           className="px-8 py-2"
         >
           Sign Up

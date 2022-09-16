@@ -7,6 +7,8 @@ connectDB();
 
 const userRoutes = require("./routes/userRoutes");
 
+const { notFound, errorHandler } = require("./middleware/errorMiddleware");
+
 app.use(express.json());
 
 app.get("/", (req, res) => {
@@ -14,6 +16,9 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/user", userRoutes);
+
+app.use(notFound);
+app.use(errorHandler);
 
 const port = process.env.PORT || 5000;
 

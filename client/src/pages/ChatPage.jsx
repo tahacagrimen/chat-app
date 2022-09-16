@@ -5,15 +5,15 @@ import { useEffect, useState } from "react";
 function ChatPage() {
   const [chats, setChats] = useState([]);
 
-  const fetchChats = async () => {
-    const data = await axios.get("/api/chats");
+  // const fetchChats = async () => {
+  //   const data = await axios.get("/api/chats");
 
-    setChats(data.data);
-  };
+  //   setChats(data.data);
+  // };
 
-  useEffect(() => {
-    fetchChats();
-  }, []);
+  // useEffect(() => {
+  //   fetchChats();
+  // }, []);
 
   return <div>ChatPage</div>;
 }
