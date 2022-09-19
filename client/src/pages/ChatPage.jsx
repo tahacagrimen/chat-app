@@ -1,21 +1,24 @@
 import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { ChatState } from "../context/ChatProvider";
+import SideDrawer from "../components/miscellaneous/SideDrawer";
+import MyChats from "../components/miscellaneous/MyChats";
+import ChatBox from "../components/miscellaneous/ChatBox";
 
 function ChatPage() {
-  const [chats, setChats] = useState([]);
+  const { user } = ChatState();
+  console.log(user);
 
-  // const fetchChats = async () => {
-  //   const data = await axios.get("/api/chats");
-
-  //   setChats(data.data);
-  // };
-
-  // useEffect(() => {
-  //   fetchChats();
-  // }, []);
-
-  return <div>ChatPage</div>;
+  return (
+    <div>
+      {user && <SideDrawer />}
+      <div>
+        {user && <MyChats />}
+        {user && <ChatBox />}
+      </div>
+    </div>
+  );
 }
 
 export default ChatPage;
