@@ -8,14 +8,16 @@ import ChatBox from "../components/miscellaneous/ChatBox";
 
 function ChatPage() {
   const { user, setUser } = useContext(ChatContext);
-  console.log(user);
+  const [fetchAgain, setFetchAgain] = useState(false);
 
   return (
     <div>
       {user && <SideDrawer />}
       <div>
-        {user && <MyChats />}
-        {user && <ChatBox />}
+        {user && <MyChats fetchAgain={fetchAgain} />}
+        {user && (
+          <ChatBox fetchAgain={fetchAgain} setFetchAgain={setFetchAgain} />
+        )}
       </div>
     </div>
   );

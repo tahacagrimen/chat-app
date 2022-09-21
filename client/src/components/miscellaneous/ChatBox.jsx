@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
+import ChatContext from "../../context/ChatProvider";
+import SingleChat from "./SingleChat";
 
-function ChatBox() {
-  return <div>ChatBox</div>;
+function ChatBox({ fetchAgain, setFetchAgain }) {
+  const { selectedChat } = useContext(ChatContext);
+
+  return (
+    <div>
+      <SingleChat fetchAgain={fetchAgain} setFetchAgain={setFetchAgain} />
+    </div>
+  );
 }
 
 export default ChatBox;
