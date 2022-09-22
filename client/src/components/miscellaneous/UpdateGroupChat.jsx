@@ -150,7 +150,7 @@ function UpdateGroupChat({ fetchAgain, setFetchAgain, fetchMessages }) {
       <h1>{selectedChat.chatName}</h1>
       <div>
         {selectedChat.users.map((user) => (
-          <div onClick={(u) => handleRemove(u)} key={user._id}>
+          <div onClick={() => handleRemove(user)} key={user._id}>
             {user.name}
           </div>
         ))}
@@ -172,13 +172,13 @@ function UpdateGroupChat({ fetchAgain, setFetchAgain, fetchMessages }) {
               <UserListItem
                 key={user._id}
                 user={user}
-                handleFunction={(u) => handleAddUser(u)}
+                handleFunction={() => handleAddUser(user)}
               />
             ))
           )}
         </div>
         <div>
-          <button onClick={(u) => handleRemove(u)}>Leave Group</button>
+          <button onClick={() => handleRemove(user)}>Leave Group</button>
         </div>
       </div>
     </div>
