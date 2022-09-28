@@ -3,7 +3,7 @@ import React from "react";
 function UserListItem({ user, handleFunction }) {
   return (
     <div
-      className="flex items-center my-4 border-solid border p-2 rounded-xl shadow-md"
+      className="flex items-center my-4 border-solid border p-2 rounded-xl shadow-md hover:cursor-pointer"
       onClick={handleFunction}
     >
       <div className="w-10">

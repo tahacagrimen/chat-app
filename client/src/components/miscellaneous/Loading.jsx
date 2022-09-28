@@ -1,11 +1,19 @@
 import React from "react";
+import { Circles } from "react-loader-spinner";
 
 function Loading() {
   return (
-    <button type="button" className="bg-indigo-500 ..." disabled>
-      <svg className="animate-spin h-5 w-5 mr-3 ..." viewBox="0 0 24 24"></svg>
-      Loading...
-    </button>
+    <div className="my-0 mx-auto w-full text-center">
+      <Circles
+        height="50"
+        width="50"
+        color="#00BFFF"
+        ariaLabel="circles-loading"
+        wrapperStyle={{}}
+        wrapperClass=""
+        visible={true}
+      />
+    </div>
   );
 }
 

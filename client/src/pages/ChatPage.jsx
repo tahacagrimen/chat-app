@@ -11,7 +11,7 @@ function ChatPage() {
   const [fetchAgain, setFetchAgain] = useState(false);
 
   return (
-    <div>
+    <div className="flex flex-row items-center justify-center  w-full h-screen bg-slate-200">
       {user && <SideDrawer />}
       <div>
         {user && <MyChats fetchAgain={fetchAgain} />}
