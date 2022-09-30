@@ -6,7 +6,7 @@ function ChatBox({ fetchAgain, setFetchAgain }) {
   const { selectedChat } = useContext(ChatContext);
 
   return (
-    <div className="w-full h-full">
+    <div className="w-full h-full chatbox">
       <SingleChat fetchAgain={fetchAgain} setFetchAgain={setFetchAgain} />
     </div>
   );

@@ -5,9 +5,12 @@ import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 import Loading from "./Loading";
 import UserListItem from "../UserAvatar/UserListItem";
-import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import { Menu } from "@headlessui/react";
+import { Dialog, Menu, Transition } from "@headlessui/react";
+
+function classNames(...classes) {
+  return classes.filter(Boolean).join(" ");
+}
 
 export default function SideDrawer() {
   const [search, setSearch] = useState("");
@@ -214,40 +217,68 @@ export default function SideDrawer() {
             </svg>
           </button>
         </div>
-        <div id="profile">
-          <div className="flex items-center justify-center p-1 border-solid border-2 rounded-lg bg-slate-200 hover:cursor-pointer shadow-lg h-12">
-            <img
-              src={user.pic}
-              className="w-8 h-8 rounded-full border-solid border-2 border-slate-600"
-              alt=""
-            />
-            <div className="flex flex-col items-end justify-center">
-              <h2 className="ml-2 text-lg font-medium">{user.name}</h2>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={3}
-                stroke="currentColor"
-                className="w-4 h-4"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M19.5 8.25l-7.5 7.5-7.5-7.5"
-                />
-              </svg>
-            </div>
+        {/* PROFILE BUTTON */}
+        <Menu as="div" className="relative inline-block text-left">
+          <div>
+            <Menu.Button>
+              <div id="profile">
+                <div className="flex items-center justify-center p-1 border-solid border-2 rounded-lg bg-slate-200 hover:cursor-pointer shadow-lg h-12">
+                  <img
+                    src={user.pic}
+                    className="w-8 h-8 rounded-full border-solid border-2 border-slate-600"
+                    alt=""
+                  />
+                  <div className="flex flex-col items-end justify-center">
+                    <h2 className="ml-2 text-lg font-medium">{user.name}</h2>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={3}
+                      stroke="currentColor"
+                      className="w-4 h-4"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </Menu.Button>
           </div>
-        </div>
+
+          <Transition
+            as={Fragment}
+            enter="transition ease-out duration-100"
+            enterFrom="transform opacity-0 scale-95"
+            enterTo="transform opacity-100 scale-100"
+            leave="transition ease-in duration-75"
+            leaveFrom="transform opacity-100 scale-100"
+            leaveTo="transform opacity-0 scale-95"
+          >
+            <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+              <div className="py-1">
+                <Menu.Item>
+                  {({ active }) => (
+                    <button
+                      onClick={logoutHandler}
+                      className={classNames(
+                        active ? "bg-gray-100 text-gray-900" : "text-gray-700",
+                        "block px-4 py-2 text-sm"
+                      )}
+                    >
+                      Log Out
+                    </button>
+                  )}
+                </Menu.Item>
+              </div>
+            </Menu.Items>
+          </Transition>
+        </Menu>
       </div>
     </div>
   );
 }
-
-// {
-/* <>
-  <div></div>
-  
-</>; */
-// }

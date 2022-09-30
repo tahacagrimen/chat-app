@@ -10,8 +10,7 @@ function Login() {
   const [loading, setLoading] = useState(false);
   let navigate = useNavigate();
 
-  const submitHandler = async (e) => {
-    e.preventDefault();
+  const submitHandler = async () => {
     setLoading(true);
     if (!email || !password) {
       setLoading(false);
@@ -49,6 +48,7 @@ function Login() {
         progress: undefined,
       });
       setLoading(false);
+      localStorage.setItem("userInfo", JSON.stringify(data));
       navigate("/chats");
     } catch (error) {
       toast("Something went wrong", {
@@ -82,8 +82,8 @@ function Login() {
         onChange={(e) => setPassword(e.target.value)}
       />
       <button
-        className="px-8 py-2 w-full bg-slate-300"
-        onClick={(e) => submitHandler(e)}
+        className="px-8 py-2 w-full bg-slate-300 rounded-lg"
+        onClick={() => submitHandler()}
       >
         Log In
       </button>

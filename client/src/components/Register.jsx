@@ -9,7 +9,7 @@ function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [picture, setPicture] = useState("");
+  const [pic, setPic] = useState("");
   const [loading, setLoading] = useState(false);
   let navigate = useNavigate();
 
@@ -61,8 +61,7 @@ function Register() {
   //   }
   // };
 
-  const submitHandler = async (e) => {
-    e.preventDefault();
+  const submitHandler = async () => {
     setLoading(true);
     if (!name || !email || !password || !confirmPassword) {
       toast("Please fill all the fields.", {
@@ -101,7 +100,7 @@ function Register() {
 
       const { data } = await axios.post(
         "/api/user",
-        { name, email, password, picture },
+        { name, email, password, pic },
         config
       );
       toast("Sign up succesfull", {
@@ -156,14 +155,13 @@ function Register() {
       />
       <h2>Profile Picture</h2>
       <input
-        type="file"
-        accept="image/*"
-        placeholder="profile picture"
+        type="text"
+        placeholder="your pics url"
         className="border-solid border rounded-xl my-2 p-2 w-full"
-        // onChange={(e) => postDetails(e.target.value)}
+        onChange={(e) => setPic(e.target.value)}
       />
       <button
-        className="px-8 py-2 w-full bg-slate-500"
+        className="px-8 py-2 w-full bg-slate-500 rounded-lg"
         onClick={(e) => submitHandler(e)}
       >
         Sign Up

@@ -18,7 +18,7 @@ function Homepage() {
   }, [navigate]);
 
   return (
-    <div className="flex items-center justify-center flex-col max-w-xl h-auto border-solid border rounded-xl p-8">
+    <div className="flex items-center justify-center flex-col max-w-xl h-auto border-solid border rounded-xl p-8 -">
       <div>
         <h1 className="text-2xl sm:text-3xl text-center p-4">
           Welcome to the Chat App
@@ -36,7 +36,9 @@ function Homepage() {
               return;
             }
           }}
-          className="px-8 py-2"
+          className={`px-8 py-2 ${
+            isLogin ? "bg-blue-300" : "bg-white"
+          } rounded-lg`}
         >
           Log In
         </button>
@@ -48,7 +50,9 @@ function Homepage() {
               return;
             }
           }}
-          className="px-8 py-2"
+          className={`px-8 py-2 ${
+            !isLogin ? "bg-blue-300" : "bg-white"
+          } rounded-lg`}
         >
           Sign Up
         </button>

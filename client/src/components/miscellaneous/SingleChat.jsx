@@ -6,7 +6,7 @@ import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 import { useEffect } from "react";
 import ScrollableMessages from "./ScrollableMessages";
-import { io } from "https://cdn.socket.io/4.3.2/socket.io.esm.min.js";
+import { io } from "socket.io-client";
 
 const ENDPOINT = "http://localhost:5000";
 let socket, selectedChatCompare;
@@ -104,14 +104,14 @@ function SingleChat({ fetchAgain, setFetchAgain }) {
   }, [selectedChat]);
 
   useEffect(() => {
-    socket.on("message received", (newMessageReceived) => {
+    socket.on("message recieved", (newMessageRecieved) => {
       if (
         !selectedChatCompare ||
-        selectedChatCompare._id !== newMessageReceived
+        selectedChatCompare._id !== newMessageRecieved.chat._id
       ) {
         // give notification
       } else {
-        setMessages([...messages, newMessageReceived]);
+        setMessages([...messages, newMessageRecieved]);
       }
     });
   });
@@ -141,8 +141,7 @@ function SingleChat({ fetchAgain, setFetchAgain }) {
   };
 
   return (
-    <div className="h-full">
-      <ToastContainer />
+    <div className="h-[80%]">
       {selectedChat ? (
         <>
           <div>
@@ -163,23 +162,23 @@ function SingleChat({ fetchAgain, setFetchAgain }) {
               </div>
             )}
           </div>
-          <div>
+          <div className="h-full">
             {loading ? (
               <div>Loading...</div>
             ) : (
-              <div>
+              <div className="h-full">
                 <ScrollableMessages messages={messages} />
               </div>
             )}
-            <form onKeyDown={sendMessage} className="">
+            <div onKeyDown={sendMessage} className="">
               {isTyping ? <div>typing...</div> : null}
               <input
-                className="w-full border-2 border-slate-200 rounded-lg p-2  mb-2"
+                className="w-full border-2 border-slate-200 rounded-lg p-2  mb-2 shadow-md"
                 onChange={typingHandler}
                 placeholder="Type a message"
                 value={newMessage}
               />
-            </form>
+            </div>
           </div>
         </>
       ) : (
