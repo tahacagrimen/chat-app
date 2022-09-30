@@ -49,6 +49,7 @@ function SingleChat({ fetchAgain, setFetchAgain }) {
       );
 
       setMessages(data);
+      console.log(messages);
       setLoading(false);
 
       socket.emit("join chat", selectedChat._id);
@@ -140,25 +141,26 @@ function SingleChat({ fetchAgain, setFetchAgain }) {
   };
 
   return (
-    <div>
+    <div className="h-full">
       <ToastContainer />
       {selectedChat ? (
         <>
           <div>
             {!selectedChat.isGroupChat ? (
               <>
-                {getSender(user, selectedChat.users)}
                 <ProfileModal user={getSenderFull(user, selectedChat.users)} />
               </>
             ) : (
-              <>
-                <div>{selectedChat.chatName}</div>
+              <div className="flex items-center justify-between bg-slate-50 p-2 rounded-lg shadow-md">
+                <div className="font-medium text-lg ml-2">
+                  {selectedChat.chatName}
+                </div>
                 <UpdateGroupChat
                   fetchAgain={fetchAgain}
                   setFetchAgain={setFetchAgain}
                   fetchMessages={fetchMessages}
                 />
-              </>
+              </div>
             )}
           </div>
           <div>
@@ -169,9 +171,10 @@ function SingleChat({ fetchAgain, setFetchAgain }) {
                 <ScrollableMessages messages={messages} />
               </div>
             )}
-            <form onKeyDown={sendMessage}>
+            <form onKeyDown={sendMessage} className="">
               {isTyping ? <div>typing...</div> : null}
               <input
+                className="w-full border-2 border-slate-200 rounded-lg p-2  mb-2"
                 onChange={typingHandler}
                 placeholder="Type a message"
                 value={newMessage}

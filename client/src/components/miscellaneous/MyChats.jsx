@@ -35,22 +35,26 @@ function MyChats({ fetchAgain }) {
   };
 
   return (
-    <div>
+    <div className="w-4/12 mr-4 h-full max-h-screen overflow-y-auto p-2 mb-8 bg-slate-100">
+      <div className="flex items-center justify-between">
+        <h1 className="font-medium">My Chats</h1>
+        <GroupChat />
+      </div>
       <div>
         {chats ? (
           chats.map((chat) => {
             return (
               <div
                 key={chat._id}
-                className="flex items-center my-4 border-solid border p-2
-                rounded-xl shadow-md"
+                className="flex items-center w-full my-2 border-solid border p-2
+                rounded-xl shadow-md bg-slate-200"
                 onClick={() => setSelectedChat(chat)}
               >
-                <div>
+                <h1 className="font-medium">
                   {!chat.isGroupChat
                     ? getSender(loggedUser, chat.users)
                     : chat.chatName}
-                </div>
+                </h1>
               </div>
             );
           })
@@ -58,7 +62,6 @@ function MyChats({ fetchAgain }) {
           <h1>No chats</h1>
         )}
       </div>
-      <GroupChat />
     </div>
   );
 }

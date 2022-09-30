@@ -43,19 +43,10 @@ function ScrollableMessages({ messages }) {
   };
 
   return (
-    <div>
-      {messages &&
-        messages.map((message, index) => (
-          <div key={message._id}>
-            {isSameSender(messages, message, index, user._id) ||
-              (isLastMessage(messages, index, user._id) && (
-                <div className="message-sender bg-slate-500">
-                  <img src={message.sender.pic} alt="" />
-                  <div>{message.content}</div>
-                </div>
-              ))}
-          </div>
-        ))}
+    <div className="h-full bg-slate-100 p-2 ">
+      {messages.map((message, index) => (
+        <div key={index}>{message.content}</div>
+      ))}
     </div>
   );
 }
