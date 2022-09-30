@@ -26,6 +26,12 @@ function MyChats({ fetchAgain }) {
   };
 
   useEffect(() => {
+    setInterval(() => {
+      fetchChats();
+    }, 1000);
+  }, []);
+
+  useEffect(() => {
     setLoggedUser(JSON.parse(localStorage.getItem("userInfo")));
     fetchChats();
   }, [fetchAgain]);
