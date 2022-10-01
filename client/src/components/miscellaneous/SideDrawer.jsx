@@ -26,8 +26,8 @@ export default function SideDrawer() {
 
   let navigate = useNavigate();
 
-  const logoutHandler = () => {
-    localStorage.removeItem("userInfo");
+  const logoutHandler = async () => {
+    await localStorage.removeItem("userInfo");
     navigate("/");
   };
 
