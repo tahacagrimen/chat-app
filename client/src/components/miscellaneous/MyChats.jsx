@@ -57,7 +57,7 @@ function MyChats({ fetchAgain }) {
                 onClick={() => setSelectedChat(chat)}
               >
                 <h1 className="font-medium">
-                  {!chat.isGroupChat
+                  {!chat.isGroupChat && selectedChat
                     ? getSender(loggedUser, chat.users)
                     : chat.chatName}
                 </h1>
