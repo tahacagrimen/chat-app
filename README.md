@@ -16,7 +16,7 @@ A Mern Stack Chat App usign Socket.io for realtime update
 
 ## Tech Stack
 
-**Frontend:** React, Tailwind, React Router Dom, HeadlessUI, Axios, Framer Motion
+**Frontend:** React, Tailwind, React Router Dom, HeadlessUI, Axios, Framer Motion, Context API
 
 **Backend**: MongoDB, Express, Node.js, Socket.io, JWT
 
